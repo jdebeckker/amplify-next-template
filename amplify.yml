@@ -8,13 +8,10 @@ backend:
         - nvm use 20.20.0
         - node --version
         - npm --version
-        # If backend code is also inside app/, run from there:
-        - cd app
         - npm ci --cache .npm --prefer-offline
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 
 frontend:
-  appRoot: app
   phases:
     preBuild:
       commands:
